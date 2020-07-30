@@ -1,0 +1,21 @@
+package ctgu.dao;
+
+import ctgu.entity.Admin;
+import ctgu.entity.AdminExample;
+import java.util.List;
+
+public interface AdminMapper {
+    int deleteByPrimaryKey(Integer adminid);
+
+    int insert(Admin record);
+
+    int insertSelective(Admin record);
+
+    List<Admin> selectByExample(AdminExample example);
+
+    Admin selectByPrimaryKey(Integer adminid);
+
+    int updateByPrimaryKeySelective(Admin record);
+
+    int updateByPrimaryKey(Admin record);
+}
