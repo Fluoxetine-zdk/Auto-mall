@@ -9,7 +9,7 @@ public class Shoppingcart {
 
     private Float price;
 
-    private Integer userid;
+    private String username;
 
     public Integer getShoppingcartid() {
         return shoppingcartid;
@@ -43,11 +43,11 @@ public class Shoppingcart {
         this.price = price;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }

@@ -5,7 +5,7 @@ import ctgu.entity.UserExample;
 import java.util.List;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer userid);
+    int deleteByPrimaryKey(String username);
 
     int insert(User record);
 
@@ -13,7 +13,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Integer userid);
+    User selectByPrimaryKey(String username);
 
     int updateByPrimaryKeySelective(User record);
 

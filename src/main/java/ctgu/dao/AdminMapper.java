@@ -5,7 +5,7 @@ import ctgu.entity.AdminExample;
 import java.util.List;
 
 public interface AdminMapper {
-    int deleteByPrimaryKey(Integer adminid);
+    int deleteByPrimaryKey(String adminname);
 
     int insert(Admin record);
 
@@ -13,7 +13,7 @@ public interface AdminMapper {
 
     List<Admin> selectByExample(AdminExample example);
 
-    Admin selectByPrimaryKey(Integer adminid);
+    Admin selectByPrimaryKey(String adminname);
 
     int updateByPrimaryKeySelective(Admin record);
 

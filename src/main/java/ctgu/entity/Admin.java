@@ -1,19 +1,9 @@
 package ctgu.entity;
 
 public class Admin {
-    private Integer adminid;
-
     private String adminname;
 
     private String password;
-
-    public Integer getAdminid() {
-        return adminid;
-    }
-
-    public void setAdminid(Integer adminid) {
-        this.adminid = adminid;
-    }
 
     public String getAdminname() {
         return adminname;

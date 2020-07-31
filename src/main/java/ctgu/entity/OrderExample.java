@@ -1,6 +1,7 @@
 package ctgu.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OrderExample {
@@ -164,63 +165,73 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andUseridIsNull() {
-            addCriterion("userid is null");
+        public Criteria andUsernameIsNull() {
+            addCriterion("username is null");
             return (Criteria) this;
         }
 
-        public Criteria andUseridIsNotNull() {
-            addCriterion("userid is not null");
+        public Criteria andUsernameIsNotNull() {
+            addCriterion("username is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUseridEqualTo(Integer value) {
-            addCriterion("userid =", value, "userid");
+        public Criteria andUsernameEqualTo(String value) {
+            addCriterion("username =", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotEqualTo(Integer value) {
-            addCriterion("userid <>", value, "userid");
+        public Criteria andUsernameNotEqualTo(String value) {
+            addCriterion("username <>", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThan(Integer value) {
-            addCriterion("userid >", value, "userid");
+        public Criteria andUsernameGreaterThan(String value) {
+            addCriterion("username >", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThanOrEqualTo(Integer value) {
-            addCriterion("userid >=", value, "userid");
+        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("username >=", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThan(Integer value) {
-            addCriterion("userid <", value, "userid");
+        public Criteria andUsernameLessThan(String value) {
+            addCriterion("username <", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThanOrEqualTo(Integer value) {
-            addCriterion("userid <=", value, "userid");
+        public Criteria andUsernameLessThanOrEqualTo(String value) {
+            addCriterion("username <=", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridIn(List<Integer> values) {
-            addCriterion("userid in", values, "userid");
+        public Criteria andUsernameLike(String value) {
+            addCriterion("username like", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotIn(List<Integer> values) {
-            addCriterion("userid not in", values, "userid");
+        public Criteria andUsernameNotLike(String value) {
+            addCriterion("username not like", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridBetween(Integer value1, Integer value2) {
-            addCriterion("userid between", value1, value2, "userid");
+        public Criteria andUsernameIn(List<String> values) {
+            addCriterion("username in", values, "username");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotBetween(Integer value1, Integer value2) {
-            addCriterion("userid not between", value1, value2, "userid");
+        public Criteria andUsernameNotIn(List<String> values) {
+            addCriterion("username not in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameBetween(String value1, String value2) {
+            addCriterion("username between", value1, value2, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotBetween(String value1, String value2) {
+            addCriterion("username not between", value1, value2, "username");
             return (Criteria) this;
         }
 
@@ -234,62 +245,52 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateEqualTo(String value) {
+        public Criteria andOrderDateEqualTo(Date value) {
             addCriterion("order_date =", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotEqualTo(String value) {
+        public Criteria andOrderDateNotEqualTo(Date value) {
             addCriterion("order_date <>", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateGreaterThan(String value) {
+        public Criteria andOrderDateGreaterThan(Date value) {
             addCriterion("order_date >", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateGreaterThanOrEqualTo(String value) {
+        public Criteria andOrderDateGreaterThanOrEqualTo(Date value) {
             addCriterion("order_date >=", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLessThan(String value) {
+        public Criteria andOrderDateLessThan(Date value) {
             addCriterion("order_date <", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLessThanOrEqualTo(String value) {
+        public Criteria andOrderDateLessThanOrEqualTo(Date value) {
             addCriterion("order_date <=", value, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLike(String value) {
-            addCriterion("order_date like", value, "orderDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderDateNotLike(String value) {
-            addCriterion("order_date not like", value, "orderDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderDateIn(List<String> values) {
+        public Criteria andOrderDateIn(List<Date> values) {
             addCriterion("order_date in", values, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotIn(List<String> values) {
+        public Criteria andOrderDateNotIn(List<Date> values) {
             addCriterion("order_date not in", values, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateBetween(String value1, String value2) {
+        public Criteria andOrderDateBetween(Date value1, Date value2) {
             addCriterion("order_date between", value1, value2, "orderDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotBetween(String value1, String value2) {
+        public Criteria andOrderDateNotBetween(Date value1, Date value2) {
             addCriterion("order_date not between", value1, value2, "orderDate");
             return (Criteria) this;
         }
@@ -304,62 +305,52 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andHandDateEqualTo(String value) {
+        public Criteria andHandDateEqualTo(Date value) {
             addCriterion("hand_date =", value, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateNotEqualTo(String value) {
+        public Criteria andHandDateNotEqualTo(Date value) {
             addCriterion("hand_date <>", value, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateGreaterThan(String value) {
+        public Criteria andHandDateGreaterThan(Date value) {
             addCriterion("hand_date >", value, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateGreaterThanOrEqualTo(String value) {
+        public Criteria andHandDateGreaterThanOrEqualTo(Date value) {
             addCriterion("hand_date >=", value, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateLessThan(String value) {
+        public Criteria andHandDateLessThan(Date value) {
             addCriterion("hand_date <", value, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateLessThanOrEqualTo(String value) {
+        public Criteria andHandDateLessThanOrEqualTo(Date value) {
             addCriterion("hand_date <=", value, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateLike(String value) {
-            addCriterion("hand_date like", value, "handDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andHandDateNotLike(String value) {
-            addCriterion("hand_date not like", value, "handDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andHandDateIn(List<String> values) {
+        public Criteria andHandDateIn(List<Date> values) {
             addCriterion("hand_date in", values, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateNotIn(List<String> values) {
+        public Criteria andHandDateNotIn(List<Date> values) {
             addCriterion("hand_date not in", values, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateBetween(String value1, String value2) {
+        public Criteria andHandDateBetween(Date value1, Date value2) {
             addCriterion("hand_date between", value1, value2, "handDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateNotBetween(String value1, String value2) {
+        public Criteria andHandDateNotBetween(Date value1, Date value2) {
             addCriterion("hand_date not between", value1, value2, "handDate");
             return (Criteria) this;
         }

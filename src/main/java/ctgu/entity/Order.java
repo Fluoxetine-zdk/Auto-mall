@@ -1,13 +1,15 @@
 package ctgu.entity;
 
+import java.util.Date;
+
 public class Order {
     private Integer orderid;
 
-    private Integer userid;
+    private String username;
 
-    private String orderDate;
+    private Date orderDate;
 
-    private String handDate;
+    private Date handDate;
 
     private Float totalprice;
 
@@ -19,28 +21,28 @@ public class Order {
         this.orderid = orderid;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate == null ? null : orderDate.trim();
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public String getHandDate() {
+    public Date getHandDate() {
         return handDate;
     }
 
-    public void setHandDate(String handDate) {
-        this.handDate = handDate == null ? null : handDate.trim();
+    public void setHandDate(Date handDate) {
+        this.handDate = handDate;
     }
 
     public Float getTotalprice() {
