@@ -6,7 +6,7 @@
     <result column="carid" property="carid" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="INTEGER" />
     <result column="price" property="price" jdbcType="REAL" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -38,7 +38,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    shoppingcartid, carid, number, price, userid
+    shoppingcartid, carid, number, price, username
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="ctgu.entity.ShoppingcartExample" >
     select
@@ -66,9 +66,9 @@
   </delete>
   <insert id="insert" parameterType="ctgu.entity.Shoppingcart" >
     insert into shoppingcart (shoppingcartid, carid, number, 
-      price, userid)
+      price, username)
     values (#{shoppingcartid,jdbcType=INTEGER}, #{carid,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
-      #{price,jdbcType=REAL}, #{userid,jdbcType=INTEGER})
+      #{price,jdbcType=REAL}, #{username,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="ctgu.entity.Shoppingcart" >
     insert into shoppingcart
@@ -85,8 +85,8 @@
       <if test="price != null" >
         price,
       </if>
-      <if test="userid != null" >
-        userid,
+      <if test="username != null" >
+        username,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -102,8 +102,8 @@
       <if test="price != null" >
         #{price,jdbcType=REAL},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -119,8 +119,8 @@
       <if test="price != null" >
         price = #{price,jdbcType=REAL},
       </if>
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
     </set>
     where shoppingcartid = #{shoppingcartid,jdbcType=INTEGER}
@@ -130,7 +130,7 @@
     set carid = #{carid,jdbcType=INTEGER},
       number = #{number,jdbcType=INTEGER},
       price = #{price,jdbcType=REAL},
-      userid = #{userid,jdbcType=INTEGER}
+      username = #{username,jdbcType=VARCHAR}
     where shoppingcartid = #{shoppingcartid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -235,123 +235,123 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateIsNull() {
-            addCriterion("order_date is null");
+        public Criteria andCreateDateIsNull() {
+            addCriterion("create_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateIsNotNull() {
-            addCriterion("order_date is not null");
+        public Criteria andCreateDateIsNotNull() {
+            addCriterion("create_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateEqualTo(Date value) {
-            addCriterion("order_date =", value, "orderDate");
+        public Criteria andCreateDateEqualTo(Date value) {
+            addCriterion("create_date =", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotEqualTo(Date value) {
-            addCriterion("order_date <>", value, "orderDate");
+        public Criteria andCreateDateNotEqualTo(Date value) {
+            addCriterion("create_date <>", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateGreaterThan(Date value) {
-            addCriterion("order_date >", value, "orderDate");
+        public Criteria andCreateDateGreaterThan(Date value) {
+            addCriterion("create_date >", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("order_date >=", value, "orderDate");
+        public Criteria andCreateDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_date >=", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLessThan(Date value) {
-            addCriterion("order_date <", value, "orderDate");
+        public Criteria andCreateDateLessThan(Date value) {
+            addCriterion("create_date <", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateLessThanOrEqualTo(Date value) {
-            addCriterion("order_date <=", value, "orderDate");
+        public Criteria andCreateDateLessThanOrEqualTo(Date value) {
+            addCriterion("create_date <=", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateIn(List<Date> values) {
-            addCriterion("order_date in", values, "orderDate");
+        public Criteria andCreateDateIn(List<Date> values) {
+            addCriterion("create_date in", values, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotIn(List<Date> values) {
-            addCriterion("order_date not in", values, "orderDate");
+        public Criteria andCreateDateNotIn(List<Date> values) {
+            addCriterion("create_date not in", values, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateBetween(Date value1, Date value2) {
-            addCriterion("order_date between", value1, value2, "orderDate");
+        public Criteria andCreateDateBetween(Date value1, Date value2) {
+            addCriterion("create_date between", value1, value2, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andOrderDateNotBetween(Date value1, Date value2) {
-            addCriterion("order_date not between", value1, value2, "orderDate");
+        public Criteria andCreateDateNotBetween(Date value1, Date value2) {
+            addCriterion("create_date not between", value1, value2, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateIsNull() {
-            addCriterion("hand_date is null");
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateIsNotNull() {
-            addCriterion("hand_date is not null");
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateEqualTo(Date value) {
-            addCriterion("hand_date =", value, "handDate");
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateNotEqualTo(Date value) {
-            addCriterion("hand_date <>", value, "handDate");
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateGreaterThan(Date value) {
-            addCriterion("hand_date >", value, "handDate");
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("hand_date >=", value, "handDate");
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateLessThan(Date value) {
-            addCriterion("hand_date <", value, "handDate");
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateLessThanOrEqualTo(Date value) {
-            addCriterion("hand_date <=", value, "handDate");
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateIn(List<Date> values) {
-            addCriterion("hand_date in", values, "handDate");
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateNotIn(List<Date> values) {
-            addCriterion("hand_date not in", values, "handDate");
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateBetween(Date value1, Date value2) {
-            addCriterion("hand_date between", value1, value2, "handDate");
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andHandDateNotBetween(Date value1, Date value2) {
-            addCriterion("hand_date not between", value1, value2, "handDate");
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
 

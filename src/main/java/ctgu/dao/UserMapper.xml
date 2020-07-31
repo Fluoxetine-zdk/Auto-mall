@@ -7,7 +7,7 @@
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -39,7 +39,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    username, password, sex, phone, email, address
+    username, password, sex, phone, email, create_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="ctgu.entity.UserExample" >
     select
@@ -67,10 +67,10 @@
   </delete>
   <insert id="insert" parameterType="ctgu.entity.User" >
     insert into user (username, password, sex, 
-      phone, email, address
+      phone, email, create_date
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="ctgu.entity.User" >
@@ -91,8 +91,8 @@
       <if test="email != null" >
         email,
       </if>
-      <if test="address != null" >
-        address,
+      <if test="createDate != null" >
+        create_date,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -111,8 +111,8 @@
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -131,8 +131,8 @@
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where username = #{username,jdbcType=VARCHAR}
@@ -143,7 +143,7 @@
       sex = #{sex,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR}
+      create_date = #{createDate,jdbcType=TIMESTAMP}
     where username = #{username,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -1,5 +1,7 @@
 package ctgu.entity;
 
+import java.util.Date;
+
 public class User {
     private String username;
 
@@ -11,7 +13,7 @@ public class User {
 
     private String email;
 
-    private String address;
+    private Date createDate;
 
     public String getUsername() {
         return username;
@@ -53,11 +55,11 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getAddress() {
-        return address;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

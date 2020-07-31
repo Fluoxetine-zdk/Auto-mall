@@ -70,6 +70,23 @@
             text-align: left;
         }
     </style>
+
+    <script type="text/javascript">
+        function beforeSubmit(form){
+            if(form.username.value===''){
+                alert('请输入用户名');
+                form.username.focus();
+                return false;
+            }
+            if(form.password.value===''){
+                alert('请输入密码');
+                form.password.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
 
 
@@ -94,23 +111,27 @@
         <div class="panel-heading" >
             <h2 class="section-title "style="text-align: center">登录</h2>
         </div>
-        <div class="panel-body">
-            <div class="has-text-centered">
-                <div class="control username">
-                    <input class="input" type="text" name="user" placeholder="Username">
+        <form action="${pageContext.request.contextPath}/login.do" method="post" name="form" onSubmit="return beforeSubmit(this);" style="margin-bottom: 0px">
+            <div class="panel-body">
+                <div class="has-text-centered">
+                    <div class="control username">
+                        <input class="input" type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="control password">
+                        <input class="input" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="has-text-left">
+                        <a href="#">忘记密码？</a>
+                    </div>
+                    <span style="color: red"><%=(request.getAttribute("login-msg")!=null)?request.getAttribute("login-msg"):""%></span>
+                    <div class="has-text-centered sign">
+                        <button type="submit" class="button login-button" tabindex="4">登录</button>
+                    </div>
                 </div>
-                <div class="control password">
-                    <input class="input" type="text" name="password" placeholder="Password">
-                </div>
-                <div class="has-text-left">
-                    <a href="#">忘记密码？</a>
-                </div>
-                <div class="has-text-centered sign">
-                    <button type="button" class="button login-button" tabindex="4">登录</button>
-                </div>
-            </div>
 
-    </div>
+            </div>
+        </form>
+
         <div class="panel-footer">
             <a href="#" tabindex="5">创建一个账户</a>
         </div>

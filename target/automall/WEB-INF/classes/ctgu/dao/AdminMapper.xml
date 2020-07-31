@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ctgu.dao.AdminMapper" >
   <resultMap id="BaseResultMap" type="ctgu.entity.Admin" >
-    <id column="adminid" property="adminid" jdbcType="INTEGER" />
-    <result column="adminname" property="adminname" jdbcType="VARCHAR" />
+    <id column="adminname" property="adminname" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -36,7 +35,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    adminid, adminname, password
+    adminname, password
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="ctgu.entity.AdminExample" >
     select
@@ -52,28 +51,23 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from admin
-    where adminid = #{adminid,jdbcType=INTEGER}
+    where adminname = #{adminname,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from admin
-    where adminid = #{adminid,jdbcType=INTEGER}
+    where adminname = #{adminname,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="ctgu.entity.Admin" >
-    insert into admin (adminid, adminname, password
-      )
-    values (#{adminid,jdbcType=INTEGER}, #{adminname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+    insert into admin (adminname, password)
+    values (#{adminname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="ctgu.entity.Admin" >
     insert into admin
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="adminid != null" >
-        adminid,
-      </if>
       <if test="adminname != null" >
         adminname,
       </if>
@@ -82,9 +76,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="adminid != null" >
-        #{adminid,jdbcType=INTEGER},
-      </if>
       <if test="adminname != null" >
         #{adminname,jdbcType=VARCHAR},
       </if>
@@ -96,19 +87,15 @@
   <update id="updateByPrimaryKeySelective" parameterType="ctgu.entity.Admin" >
     update admin
     <set >
-      <if test="adminname != null" >
-        adminname = #{adminname,jdbcType=VARCHAR},
-      </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
-    where adminid = #{adminid,jdbcType=INTEGER}
+    where adminname = #{adminname,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="ctgu.entity.Admin" >
     update admin
-    set adminname = #{adminname,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
-    where adminid = #{adminid,jdbcType=INTEGER}
+    set password = #{password,jdbcType=VARCHAR}
+    where adminname = #{adminname,jdbcType=VARCHAR}
   </update>
 </mapper>

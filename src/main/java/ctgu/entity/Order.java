@@ -7,9 +7,9 @@ public class Order {
 
     private String username;
 
-    private Date orderDate;
+    private Date createDate;
 
-    private Date handDate;
+    private Integer status;
 
     private Float totalprice;
 
@@ -29,20 +29,20 @@ public class Order {
         this.username = username == null ? null : username.trim();
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public Date getHandDate() {
-        return handDate;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setHandDate(Date handDate) {
-        this.handDate = handDate;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Float getTotalprice() {

@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="ctgu.entity.Order" >
     <id column="orderid" property="orderid" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
-    <result column="hand_date" property="handDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="totalprice" property="totalprice" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -38,7 +38,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orderid, username, order_date, hand_date, totalprice
+    orderid, username, create_date, status, totalprice
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="ctgu.entity.OrderExample" >
     select
@@ -65,10 +65,10 @@
     where orderid = #{orderid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="ctgu.entity.Order" >
-    insert into order (orderid, username, order_date, 
-      hand_date, totalprice)
-    values (#{orderid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, 
-      #{handDate,jdbcType=TIMESTAMP}, #{totalprice,jdbcType=REAL})
+    insert into order (orderid, username, create_date, 
+      status, totalprice)
+    values (#{orderid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{totalprice,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="ctgu.entity.Order" >
     insert into order
@@ -79,11 +79,11 @@
       <if test="username != null" >
         username,
       </if>
-      <if test="orderDate != null" >
-        order_date,
+      <if test="createDate != null" >
+        create_date,
       </if>
-      <if test="handDate != null" >
-        hand_date,
+      <if test="status != null" >
+        status,
       </if>
       <if test="totalprice != null" >
         totalprice,
@@ -96,11 +96,11 @@
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="orderDate != null" >
-        #{orderDate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="handDate != null" >
-        #{handDate,jdbcType=TIMESTAMP},
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="totalprice != null" >
         #{totalprice,jdbcType=REAL},
@@ -113,11 +113,11 @@
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="orderDate != null" >
-        order_date = #{orderDate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="handDate != null" >
-        hand_date = #{handDate,jdbcType=TIMESTAMP},
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="totalprice != null" >
         totalprice = #{totalprice,jdbcType=REAL},
@@ -128,8 +128,8 @@
   <update id="updateByPrimaryKey" parameterType="ctgu.entity.Order" >
     update order
     set username = #{username,jdbcType=VARCHAR},
-      order_date = #{orderDate,jdbcType=TIMESTAMP},
-      hand_date = #{handDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
       totalprice = #{totalprice,jdbcType=REAL}
     where orderid = #{orderid,jdbcType=INTEGER}
   </update>
