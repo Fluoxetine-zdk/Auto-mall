@@ -1,42 +1,26 @@
 package ctgu.entity;
 
 public class User {
-    private Integer uid;
-
-    private String name;
-
-    private String password;
+    private Integer userid;
 
     private String username;
 
-    private String email;
+    private String password;
+
+    private String sex;
 
     private String phone;
 
-    private byte[] photo;
+    private String email;
 
-    public Integer getUid() {
-        return uid;
+    private String address;
+
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -47,12 +31,20 @@ public class User {
         this.username = username == null ? null : username.trim();
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public String getPhone() {
@@ -63,11 +55,19 @@ public class User {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public byte[] getPhoto() {
-        return photo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 }

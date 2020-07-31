@@ -25,9 +25,8 @@
     </bean>
 
     <!-- 设置静态资源不过滤 -->
-    <mvc:resources location="/css/" mapping="/css/**" />
-    <mvc:resources location="/img/" mapping="/img/**" />
-    <mvc:resources location="/plugins/" mapping="/js/**" />
+    <mvc:resources location="/resource/" mapping="/resource/**" />
+
 
     <!-- 开启对SpringMVC注解的支持 -->
     <mvc:annotation-driven />
@@ -44,8 +43,22 @@
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 设定默认编码 -->
         <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 最大内存大小 (10240)-->
+        <property name="maxInMemorySize" value="10240"/>
+        <!-- 上传后的目录名 -->
+        <property name="uploadTempDir" value="/resource/upload/"/>
         <!-- 设定文件上传的最大值 -->
-        <property name="maxUploadSize" value="99999999"></property>
+        <property name="maxUploadSize" value="-1"></property>
+    </bean>
+
+    <!-- 全局日期转换器 -->
+    <bean id="formattingConversionServiceFactoryBean"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean id="dateConverter" class="ctgu.utils.DateConverter"></bean>
+            </list>
+        </property>
     </bean>
 
 </beans>

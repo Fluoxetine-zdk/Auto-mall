@@ -13,23 +13,28 @@
    http://www.springframework.org/schema/tx
    http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:property-placeholder location="classpath:db.properties"/>
     <!-- 开启注解扫描 -->
     <context:component-scan base-package="ctgu">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <aop:aspectj-autoproxy/>
+
     <!-- Spring整合Mybatis框架 -->
     <!-- 配置连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/lostfindsys?serverTimezone=UTC"/>
-        <property name="user" value="root"/>
-        <property name="password" value="123"/>
+        <property name="driverClass" value="${jdbc_driver}"/>
+        <property name="jdbcUrl" value="${jdbc_url}"/>
+        <property name="user" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
     </bean>
 
     <!-- 配置SQLSessionFactory工厂 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:ctgu/dao/*.xml"/>
+        <property name="typeAliasesPackage" value="ctgu.entity"/>
         <!-- 传入PageHelper的插件 -->
         <property name="plugins">
             <array>
@@ -49,6 +54,7 @@
     <!-- 配置DAO接口所在包 -->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="ctgu.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
 
