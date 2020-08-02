@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>失物招领网后台</title>
+<title>新车网后台管理系统</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->

@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>失物招领系统后台管理 | Message</title>
+<title>新车网后台管理 | 产品信息</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->
@@ -38,7 +38,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 
@@ -61,8 +61,8 @@
 					数据管理 <small>数据列表</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-					<li><a href="#">数据管理</a></li>
+					<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
+					<li><a >产品管理</a></li>
 					<li class="active">数据列表</li>
 				</ol>
 			</section>
@@ -122,49 +122,44 @@
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
 										<th class="sorting_asc">ID</th>
-										<th class="sorting_desc">用户姓名</th>
-										<th class="sorting_asc sorting_asc_disabled">信息描述</th>
-										<th class="sorting_desc">酬金</th>
-										<th class="sorting_desc sorting_desc_disabled">发布日期</th>
-										<th class="sorting">信息类别</th>
-										<th class="text-center sorting">地址</th>
-										<th class="text-center sorting">状态</th>
+										<th class="sorting_desc">产品名称</th>
+<%--										<th class="sorting_asc sorting_asc_disabled">信息描述</th>--%>
+										<th class="sorting_desc">价格</th>
+<%--										<th class="sorting_desc sorting_desc_disabled">发布日期</th>--%>
+										<th class="sorting">车型</th>
+										<th class="text-center sorting">品牌</th>
+<%--										<th class="text-center sorting">状态</th>--%>
 										<th class="text-center">操作</th>
 									</tr>
 								</thead>
 								<tbody>
 
 
-									<c:forEach items="${pageInfo.list}" var="message">
+									<c:forEach items="${pageInfo.list}" var="car">
 
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td>${message.id }</td>
-											<td>${message.username}</td>
-											<td>${message.description}</td>
-											<c:if test="${message.reward == 0 || message.reward == null}">
-												<td>无</td>
-											</c:if>
-											<c:if test="${message.reward > 0 }">
-												<td>${message.reward}</td>
-											</c:if>
-											<td>${message.createdate}</td>
-											<c:if test="${message.class_message == 0}">
-												<td class="text-center">失物信息</td>
-											</c:if>
-											<c:if test="${message.class_message == 1}">
-												<td class="text-center">招领信息</td>
-											</c:if>
-											<td>${message.address}</td>
-											<c:if test="${message.bastus == 0}">
-												<td class="text-center">未解决</td>
-											</c:if>
-											<c:if test="${message.bastus == 1}">
-												<td class="text-center">已解决</td>
-											</c:if>
+											<td>${car.carid}</td>
+											<td>${car.carname}</td>
+											<td>￥${car.price}</td>
+
+											<c:forEach items="${carmodelList}" var="carmodel">
+												<c:if test="${car.modelid == carmodel.modelid}">
+													<td>${carmodel.modelname}</td>
+												</c:if>
+											</c:forEach>
+
+											<c:forEach items="${brandList}" var="brand">
+												<c:if test="${car.brandid == brand.brandid}">
+													<td>${brand.brandname}</td>
+												</c:if>
+											</c:forEach>
+
+
+
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/backstage/message/findByMessId.do?id=${message.id}" class="btn bg-olive btn-xs">编辑</a>
-												<a href="javascript:deleteMess(${message.id})" class="btn bg-olive btn-xs">删除</a>
+												<a href="${pageContext.request.contextPath}/backstageFindCarById.do?carid=${car.carid}" class="btn bg-olive btn-xs">编辑</a>
+												<a href="javascript:deleteMess(${car.carid})" class="btn bg-olive btn-xs">删除</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -194,13 +189,13 @@
 
 						<div class="box-tools pull-right">
 							<ul class="pagination">
-								<li><a href="${pageContext.request.contextPath}/backstage/message/findAll.do?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
-								<li><a href="${pageContext.request.contextPath}/backstage/message/findAll.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
 								<c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
-									<li><a href="${pageContext.request.contextPath}/backstage/message/findAll.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+									<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
 								</c:forEach>
-								<li><a href="${pageContext.request.contextPath}/backstage/message/findAll.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
-								<li><a href="${pageContext.request.contextPath}/backstage/message/findAll.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
 							</ul>
 						</div>
 
@@ -229,97 +224,22 @@
 	</div>
 
 
-	<script
-		src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/jQueryUI/jquery-ui.min.js"></script>
-	<script>
-		$.widget.bridge('uibutton', $.ui.button);
-	</script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/raphael/raphael-min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/morris/morris.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/sparkline/jquery.sparkline.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/knob/jquery.knob.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/daterangepicker/moment.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/daterangepicker/daterangepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datepicker/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/fastclick/fastclick.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/adminLTE/js/app.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/treeTable/jquery.treetable.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/select2/select2.full.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/js/markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/js/to-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/input-mask/jquery.inputmask.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/chartjs/Chart.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.resize.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.pie.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.categories.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/ionslider/ion.rangeSlider.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-slider/bootstrap-slider.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<!-- jQuery 2.2.3 -->
+	<script src="/webjars/adminlte/2.3.11/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<!-- Bootstrap 3.3.6 -->
+	<script src="/webjars/adminlte/2.3.11/bootstrap/js/bootstrap.min.js"></script>
+	<!-- ChartJS 1.0.1 -->
+	<script src="/webjars/adminlte/2.3.11/plugins/chartjs/Chart.min.js"></script>
+	<!-- FastClick -->
+	<script src="/webjars/adminlte/2.3.11/plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE App -->
+	<script src="/webjars/adminlte/2.3.11/dist/js/app.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="/webjars/adminlte/2.3.11/dist/js/demo.js"></script>
 	<script>
 		function changePageSize(){
 			var pageSize = $("#changePageSize").val();
-			location.href = "${pageContext.request.contextPath}/backstage/message/findAll.do?page=1&size="+pageSize;
+			location.href = "${pageContext.request.contextPath}/findCarListByBackstage.do?page=1&size="+pageSize;
 
 		}
 

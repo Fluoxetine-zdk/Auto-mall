@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>新车网后台管理 | 用户管理</title>
+	<title>新车网后台管理 | Admin管理</title>
 
 
 	<!-- Tell the browser to be responsive to screen width -->
@@ -59,11 +59,11 @@
 		<!-- 内容头部 -->
 		<section class="content-header">
 			<h1>
-				用户管理 <small>数据列表</small>
+				Admin管理 <small>数据列表</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-				<li><a href="#">用户管理</a></li>
+				<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
+				<li><a >Admin管理</a></li>
 				<li class="active">数据列表</li>
 			</ol>
 		</section>
@@ -87,11 +87,11 @@
 						<div class="pull-left">
 							<div class="form-group form-inline">
 								<div class="btn-group">
-									<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/backstage/user-add.jsp'">
+									<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/backstage/admin-add.jsp'">
 										<i class="fa fa-file-o"></i> 新建
 									</button>
 
-									<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/findUserList.do?page=1&size=5'">
+									<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/findAdminList.do?page=1&size=5'">
 										<i class="fa fa-refresh"></i> 刷新
 									</button>
 								</div>
@@ -108,40 +108,26 @@
 								<th class="" style="padding-right: 0px"><input
 										id="selall" type="checkbox" class="icheckbox_square-blue">
 								</th>
-								<th class="sorting_desc">用户名</th>
-								<th class="sorting_asc sorting_asc_disabled">性别</th>
-								<th class="sorting_desc sorting_desc_disabled">联系电话</th>
-								<th class="sorting_desc sorting_desc_disabled">邮箱</th>
+								<th class="sorting_desc">Admin用户名</th>
 								<th class="sorting">状态</th>
-								<th class="sorting">权限</th>
-								<th class="sorting">创建时间</th>
 								<th class="text-center">操作</th>
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${pageInfo.list}" var="user">
+							<c:forEach items="${pageInfo.list}" var="admin">
 								<tr>
 									<td><input name="ids" type="checkbox"></td>
-									<td>${user.username }</td>
-									<td>${user.sex}</td>
-									<td>${user.phone}</td>
-									<td>${user.email}</td>
-									<c:if test="${user.status == 1}">
+									<td>${admin.adminname}</td>
+
+									<c:if test="${admin.status == 1}">
 										<td class="">可用</td>
 									</c:if>
-									<c:if test="${user.status == 0}">
+									<c:if test="${admin.status == 0}">
 										<td>禁用</td>
 									</c:if>
 
-									<c:if test="${user.classno == 0}">
-										<td class="">普通用户</td>
-									</c:if>
-									<c:if test="${user.classno == 1}">
-										<td>VIP用户</td>
-									</c:if>
-									<td>${user.createDate}</td>
 									<td class="text-center">
-										<a href="${pageContext.request.contextPath}/backstageFindUserByName.do?username=${user.username}" class="btn bg-olive btn-xs">编辑</a>
+										<a href="${pageContext.request.contextPath}/findAdminByName.do?adminname=${admin.adminname}" class="btn bg-olive btn-xs">编辑</a>
 
 									</td>
 								</tr>
@@ -226,7 +212,7 @@
 <script>
 	function changePageSize(){
 		var pageSize = $("#changePageSize").val();
-		location.href = "${pageContext.request.contextPath}/findUserList.do?page=1&size="+pageSize;
+		location.href = "${pageContext.request.contextPath}/findAdminList.do?page=1&size="+pageSize;
 
 	}
 

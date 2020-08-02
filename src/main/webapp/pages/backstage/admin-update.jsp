@@ -1,13 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <!-- 页面meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>新车网后台管理 | 添加用户</title>
+<title>新车网后台管理 | Admin信息修改</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->
@@ -30,24 +30,6 @@
 
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
-	<script type="text/javascript">
-		function beforeSubmit(form){
-			if(form.username.value===''){
-				alert('用户名不能为空！');
-				form.username.focus();
-				return false;
-			}
-			if(form.password.value===''){
-				alert('密码不能为空！');
-				form.password.focus();
-				return false;
-			}
-			alert("添加成功！");
-			return true;
-		}
-	</script>
-
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -79,56 +61,36 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/addUser.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
+			<form action="${pageContext.request.contextPath}/backstageUpdateAdmin.do" method="post">
 				<!-- 正文区域 -->
-				<section class="content">
+				<section class="content"> <!--产品信息-->
 
 				<div class="panel panel-default">
 					<div class="panel-heading">用户信息</div>
 					<div class="row data-type">
 
-						<div class="col-md-2 title">用户名称</div>
+						<div class="col-md-2 title">用户账号</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="username"
-								placeholder="用户名称" value="">
+							<input type="text" disabled class="form-control" value="${admin.adminname}">
+							<input type="hidden" class="form-control" name="adminname" value="${admin.adminname}">
 						</div>
 						<div class="col-md-2 title">密码</div>
 						<div class="col-md-4 data">
-							<input type="password" class="form-control" name="password"
-								placeholder="密码" value="">
-						</div>
-						<div class="col-md-2 title">邮箱</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="email"
-								placeholder="邮箱" value="">
-						</div>
-						<div class="col-md-2 title">性别</div>
-						<div class="col-md-4 data">
-							<label><input type="radio" name="sex" value="男" >男</label>
-							<label><input type="radio" name="sex" value="女" >女</label>
-						</div>
-						<div class="col-md-2 title">联系电话</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="phone"
-								placeholder="联系电话" value="">
+							<input type="text" class="form-control" name="password" value="${admin.password}">
 						</div>
 						<div class="col-md-2 title">用户状态</div>
 						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%"
-								name="status">
-								<option value="1">可用</option>
-								<option value="0" >禁用</option>
+							<select class="form-control select2" style="width: 100%" name="status">
+								<c:if test="${admin.status == 0}">
+									<option value="0" >禁用</option>
+									<option value="1">可用</option>
+								</c:if>
+								<c:if test="${admin.status == 1}">
+									<option value="1">可用</option>
+									<option value="0" >禁用</option>
+								</c:if>
 							</select>
 						</div>
-						<div class="col-md-2 title">权限</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%"
-									name="classno">
-								<option value="0" selected="selected">普通用户</option>
-								<option value="1">VIP用户</option>
-							</select>
-						</div>
-
 					</div>
 				</div>
 				<!--订单信息/--> <!--工具栏-->

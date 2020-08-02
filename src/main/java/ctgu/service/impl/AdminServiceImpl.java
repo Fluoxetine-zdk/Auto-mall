@@ -1,5 +1,6 @@
 package ctgu.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import ctgu.dao.AdminMapper;
 import ctgu.entity.Admin;
 import ctgu.entity.AdminExample;
@@ -49,5 +50,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int updateByPrimaryKey(Admin record) {
         return adminMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Admin> findAdminList(AdminExample example, Integer page, Integer size) {
+        PageHelper.startPage(page,size);
+        return adminMapper.selectByExample(example);
     }
 }

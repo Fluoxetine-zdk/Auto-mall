@@ -7,7 +7,7 @@
 <!-- 页面meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>新车网后台管理 | 添加用户</title>
+<title>新车网后台管理 | 添加Admin</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->
@@ -79,7 +79,7 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/addUser.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
+			<form action="${pageContext.request.contextPath}/addAdmin.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
 				<!-- 正文区域 -->
 				<section class="content">
 
@@ -89,28 +89,13 @@
 
 						<div class="col-md-2 title">用户名称</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="username"
+							<input type="text" class="form-control" name="adminname"
 								placeholder="用户名称" value="">
 						</div>
 						<div class="col-md-2 title">密码</div>
 						<div class="col-md-4 data">
 							<input type="password" class="form-control" name="password"
 								placeholder="密码" value="">
-						</div>
-						<div class="col-md-2 title">邮箱</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="email"
-								placeholder="邮箱" value="">
-						</div>
-						<div class="col-md-2 title">性别</div>
-						<div class="col-md-4 data">
-							<label><input type="radio" name="sex" value="男" >男</label>
-							<label><input type="radio" name="sex" value="女" >女</label>
-						</div>
-						<div class="col-md-2 title">联系电话</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="phone"
-								placeholder="联系电话" value="">
 						</div>
 						<div class="col-md-2 title">用户状态</div>
 						<div class="col-md-4 data">
@@ -121,14 +106,6 @@
 							</select>
 						</div>
 						<div class="col-md-2 title">权限</div>
-						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%"
-									name="classno">
-								<option value="0" selected="selected">普通用户</option>
-								<option value="1">VIP用户</option>
-							</select>
-						</div>
-
 					</div>
 				</div>
 				<!--订单信息/--> <!--工具栏-->

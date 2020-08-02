@@ -19,4 +19,6 @@ public interface AdminService {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
+
+    List<Admin> findAdminList(AdminExample example, Integer page, Integer size);
 }

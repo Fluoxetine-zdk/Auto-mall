@@ -7,7 +7,7 @@
 <!-- 页面meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>失物招领系统后台管理 | AddUser</title>
+<title>新车网后台管理 | 添加用户</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->
@@ -25,6 +25,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+	<link rel="stylesheet" href="../../resource/css/style.css">
+
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 	<script type="text/javascript">
 		function beforeSubmit(form){
@@ -45,7 +50,7 @@
 
 </head>
 
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 
@@ -65,16 +70,16 @@
 				用户管理 <small>用户表单</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
+				<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/backstage/user/findAll.do">用户管理</a></li>
+					href="${pageContext.request.contextPath}/findUserList.do">用户管理</a></li>
 				<li class="active">用户表单</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/backstage/user/addUser.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
+			<form action="${pageContext.request.contextPath}/addUser.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
 				<!-- 正文区域 -->
 				<section class="content">
 
@@ -104,7 +109,7 @@
 						</div>
 						<div class="col-md-2 title">联系电话</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="mobile"
+							<input type="text" class="form-control" name="phone"
 								placeholder="联系电话" value="">
 						</div>
 						<div class="col-md-2 title">用户状态</div>
@@ -120,7 +125,7 @@
 							<select class="form-control select2" style="width: 100%"
 									name="classno">
 								<option value="0" selected="selected">普通用户</option>
-								<option value="1">管理员</option>
+								<option value="1">VIP用户</option>
 							</select>
 						</div>
 
@@ -152,91 +157,18 @@
 	</div>
 
 
-	<script
-		src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/jQueryUI/jquery-ui.min.js"></script>
-	<script>
-		$.widget.bridge('uibutton', $.ui.button);
-	</script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/raphael/raphael-min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/morris/morris.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/sparkline/jquery.sparkline.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/knob/jquery.knob.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/daterangepicker/moment.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/daterangepicker/daterangepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datepicker/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/fastclick/fastclick.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/adminLTE/js/app.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/treeTable/jquery.treetable.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/select2/select2.full.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/js/markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-markdown/js/to-markdown.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/input-mask/jquery.inputmask.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/chartjs/Chart.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.resize.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.pie.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/flot/jquery.flot.categories.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/ionslider/ion.rangeSlider.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-slider/bootstrap-slider.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<!-- jQuery 2.2.3 -->
+	<script src="/webjars/adminlte/2.3.11/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<!-- Bootstrap 3.3.6 -->
+	<script src="/webjars/adminlte/2.3.11/bootstrap/js/bootstrap.min.js"></script>
+	<!-- ChartJS 1.0.1 -->
+	<script src="/webjars/adminlte/2.3.11/plugins/chartjs/Chart.min.js"></script>
+	<!-- FastClick -->
+	<script src="/webjars/adminlte/2.3.11/plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE App -->
+	<script src="/webjars/adminlte/2.3.11/dist/js/app.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="/webjars/adminlte/2.3.11/dist/js/demo.js"></script>
 
 	<script>
 		$(document).ready(function() {

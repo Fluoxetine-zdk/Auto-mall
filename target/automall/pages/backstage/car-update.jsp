@@ -7,9 +7,7 @@
 <!-- 页面meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>数据 - AdminLTE2定制版</title>
-<meta name="description" content="AdminLTE2定制版">
-<meta name="keywords" content="AdminLTE2定制版">
+<title>新车网后台管理 | 产品信息更新</title>
 
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -26,6 +24,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+	<link rel="stylesheet" href="../../resource/css/style.css">
+
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -45,13 +48,13 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				信息管理 <small>添加信息</small>
+				产品管理 <small>产品更新</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
+				<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/backstage/message/findAll.do">信息管理</a></li>
+					href="${pageContext.request.contextPath}/findCarListByBackstage.do">产品管理</a></li>
 				<li class="active">添加信息</li>
 			</ol>
 			</section>

@@ -61,4 +61,25 @@ public class UserController {
         mv.setViewName("backstage/user-list");
         return mv;
     }
+
+    @RequestMapping("/addUser.do")
+    public String addUser(User user){
+        userService.insertSelective(user);
+        return "redirect:findUserList.do";
+    }
+
+    @RequestMapping("/backstageFindUserByName.do")
+    public ModelAndView findUserByName(String username){
+        ModelAndView mv = new ModelAndView();
+        User user = userService.selectByPrimaryKey(username);
+        mv.addObject("user",user);
+        mv.setViewName("backstage/user-update");
+        return mv;
+    }
+
+    @RequestMapping("/backstageUpdateUser.do")
+    public String updateUser(User user){
+        userService.updateByPrimaryKeySelective(user);
+        return "redirect:findUserList.do";
+    }
 }
