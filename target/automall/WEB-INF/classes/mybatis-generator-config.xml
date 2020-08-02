@@ -77,7 +77,7 @@
             <property name="modelOnly" value="false" />
         </table>
         <table
-                tableName="carmodle"
+                tableName="carmodel"
                 enableCountByExample="false"
                 enableDeleteByExample="false"
                 enableSelectByExample="true"
@@ -114,6 +114,15 @@
         </table>
         <table
                 tableName="user"
+                enableCountByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="true"
+                enableUpdateByExample="false"
+        >
+            <property name="modelOnly" value="false" />
+        </table>
+        <table
+                tableName="userclass"
                 enableCountByExample="false"
                 enableDeleteByExample="false"
                 enableSelectByExample="true"

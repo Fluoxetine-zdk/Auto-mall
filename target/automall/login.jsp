@@ -115,7 +115,7 @@
             <div class="panel-body">
                 <div class="has-text-centered">
                     <div class="control username">
-                        <input class="input" type="text" name="username" placeholder="Username">
+                        <input class="input" type="text" name="username" placeholder="UserName">
                     </div>
                     <div class="control password">
                         <input class="input" type="password" name="password" placeholder="Password">

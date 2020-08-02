@@ -514,6 +514,126 @@ public class UserExample {
             addCriterion("create_date not between", value1, value2, "createDate");
             return (Criteria) this;
         }
+
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoIsNull() {
+            addCriterion("classno is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoIsNotNull() {
+            addCriterion("classno is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoEqualTo(Integer value) {
+            addCriterion("classno =", value, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoNotEqualTo(Integer value) {
+            addCriterion("classno <>", value, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoGreaterThan(Integer value) {
+            addCriterion("classno >", value, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("classno >=", value, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoLessThan(Integer value) {
+            addCriterion("classno <", value, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoLessThanOrEqualTo(Integer value) {
+            addCriterion("classno <=", value, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoIn(List<Integer> values) {
+            addCriterion("classno in", values, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoNotIn(List<Integer> values) {
+            addCriterion("classno not in", values, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoBetween(Integer value1, Integer value2) {
+            addCriterion("classno between", value1, value2, "classno");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnoNotBetween(Integer value1, Integer value2) {
+            addCriterion("classno not between", value1, value2, "classno");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -15,6 +15,10 @@ public class User {
 
     private Date createDate;
 
+    private Integer status;
+
+    private Integer classno;
+
     public String getUsername() {
         return username;
     }
@@ -61,5 +65,21 @@ public class User {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getClassno() {
+        return classno;
+    }
+
+    public void setClassno(Integer classno) {
+        this.classno = classno;
     }
 }

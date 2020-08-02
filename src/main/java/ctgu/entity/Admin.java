@@ -5,6 +5,8 @@ public class Admin {
 
     private String password;
 
+    private Integer status;
+
     public String getAdminname() {
         return adminname;
     }
@@ -19,5 +21,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

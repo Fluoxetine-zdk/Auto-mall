@@ -98,7 +98,7 @@
                 <div class="hero-content">
                     <h2 style="color: white;font-weight: 600;">您好，</h2>
                     <h1 class="text-info" style="color: white">欢迎来到新车网</h1>
-                    <a href="#" class="essence-btn" style="margin-left: 680px;margin-top: 30px">开始新车选购</a>
+                    <a href="${pageContext.request.contextPath}/unLogin/findAllCarList.do?page=1&size=12" class="essence-btn" style="margin-left: 680px;margin-top: 30px">开始新车选购</a>
                 </div>
             </div>
         </div>

@@ -1,12 +1,18 @@
 package ctgu.controller;
 
+import com.github.pagehelper.PageInfo;
+import ctgu.entity.Admin;
+import ctgu.entity.AdminExample;
 import ctgu.entity.User;
 import ctgu.entity.UserExample;
+import ctgu.service.AdminService;
 import ctgu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -26,12 +32,11 @@ public class UserController {
         if (list.size() ==1){
             User loginedUser = list.get(0);
             model.addAttribute("username",loginedUser.getUsername());
-            return "index";
+            return "user/index";
         } else {
             model.addAttribute("login-msg","登录失败，用户名或密码错误");
             return "forward:login.jsp";
         }
-
     }
 
     @RequestMapping("/register.do")
@@ -44,7 +49,16 @@ public class UserController {
             userService.insertSelective(registerUser);
             return "redirect:login.jsp";
         }
+    }
 
-
+    @RequestMapping("/findUserList.do")
+    public ModelAndView findUserList(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "5") Integer size){
+        ModelAndView mv = new ModelAndView();
+        UserExample userExample = new UserExample();
+        List<User> userList = userService.selectAll(userExample,page,size);
+        PageInfo pageInfo = new PageInfo(userList);
+        mv.addObject(pageInfo);
+        mv.setViewName("backstage/user-list");
+        return mv;
     }
 }

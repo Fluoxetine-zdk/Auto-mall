@@ -1,5 +1,6 @@
 package ctgu.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import ctgu.dao.UserMapper;
 import ctgu.entity.User;
 import ctgu.entity.UserExample;
@@ -50,5 +51,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<User> selectAll(UserExample example, Integer page, Integer size) {
+        PageHelper.startPage(page,size);
+        return userMapper.selectByExample(example);
     }
 }
