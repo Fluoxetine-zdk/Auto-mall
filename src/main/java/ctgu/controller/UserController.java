@@ -1,22 +1,21 @@
 package ctgu.controller;
 
 import com.github.pagehelper.PageInfo;
-import ctgu.entity.Admin;
-import ctgu.entity.AdminExample;
 import ctgu.entity.User;
 import ctgu.entity.UserExample;
-import ctgu.service.AdminService;
 import ctgu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes("username")
 public class UserController {
 
     @Autowired
@@ -63,23 +62,61 @@ public class UserController {
     }
 
     @RequestMapping("/addUser.do")
-    public String addUser(User user){
-        userService.insertSelective(user);
-        return "redirect:findUserList.do";
+    public ModelAndView addUser(User user){
+        ModelAndView mv = new ModelAndView();
+        User result = userService.selectByPrimaryKey(user.getUsername());
+        if (result != null){
+            mv.addObject("addUserErrorMessage","用户名已存在，请重新输入！");
+            mv.setViewName("backstage/user-add");
+        } else {
+            userService.insertSelective(user);
+            mv.setViewName("redirect:findUserList.do");
+        }
+        return mv;
+    }
+
+    public ModelAndView selectByUsername(String username){
+        ModelAndView mv = new ModelAndView();
+        User user = userService.selectByPrimaryKey(username);
+        mv.addObject("user",user);
+        return mv;
     }
 
     @RequestMapping("/backstageFindUserByName.do")
     public ModelAndView findUserByName(String username){
-        ModelAndView mv = new ModelAndView();
-        User user = userService.selectByPrimaryKey(username);
-        mv.addObject("user",user);
+        ModelAndView mv = selectByUsername(username);
         mv.setViewName("backstage/user-update");
         return mv;
     }
 
     @RequestMapping("/backstageUpdateUser.do")
-    public String updateUser(User user){
+    public String updateUserByBackstage(User user){
         userService.updateByPrimaryKeySelective(user);
         return "redirect:findUserList.do";
     }
+
+    @RequestMapping("/findUserMessage.do")
+    public ModelAndView findUserMessage(String username){
+        ModelAndView mv = selectByUsername(username);
+        mv.setViewName("user/userMessage");
+        return mv;
+    }
+
+    @RequestMapping("/beforeUserMessageUpate.do")
+    public ModelAndView beforeUserMessageUpate(String username){
+        ModelAndView mv = selectByUsername(username);
+        mv.setViewName("user/userUpdate");
+        return mv;
+    }
+
+    @RequestMapping("/userMessageUpdateByUser.do")
+    public ModelAndView updateUserByUser(User user){
+        ModelAndView modelAndView = new ModelAndView();
+        userService.updateByPrimaryKeySelective(user);
+        modelAndView.setViewName("redirect:findUserMessage.do");
+        return modelAndView;
+    }
+
+
+
 }

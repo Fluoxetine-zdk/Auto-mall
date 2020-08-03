@@ -21,7 +21,7 @@
 		function deleteMess(id) {
 			//安全提示
 			if (confirm("您确定要删除该条信息吗？")){
-				location.href = "${pageContext.request.contextPath}/backstage/message/deleteMess.do?id="+id;
+				location.href = "${pageContext.request.contextPath}/deleteCarInfoByCarId.do?carid="+id;
 			}
 		}
 	</script>
@@ -58,7 +58,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 				<h1>
-					数据管理 <small>数据列表</small>
+					产品管理 <small>数据列表</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
@@ -87,14 +87,14 @@
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default" title="新建"
-											onclick="location.href='${pageContext.request.contextPath}/pages/backstage/message-add.jsp'">
+											onclick="location.href='${pageContext.request.contextPath}/toAddCarInfoPage.do'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										<button type="button" class="btn btn-default" title="删除">
 											<i class="fa fa-trash-o"></i> 删除
 										</button>
 										<button type="button" class="btn btn-default" title="刷新"
-												onclick="location.href='${pageContext.request.contextPath}/backstage/message/findAll.do'">
+												onclick="location.href='${pageContext.request.contextPath}/findCarListByBackstage.do'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>

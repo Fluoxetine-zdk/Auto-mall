@@ -33,8 +33,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Carinfo> selectByExample(CarinfoExample example, Integer page, Integer size) {
-        PageHelper.startPage(page,size);
+    public List<Carinfo> selectByExample(CarinfoExample example) {
         return carinfoMapper.selectByExample(example);
     }
 
@@ -51,5 +50,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public int updateByPrimaryKey(Carinfo record) {
         return carinfoMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Carinfo> selectListByPages(CarinfoExample example, Integer page, Integer size) {
+        PageHelper.startPage(page,size);
+        return carinfoMapper.selectByExample(example);
     }
 }

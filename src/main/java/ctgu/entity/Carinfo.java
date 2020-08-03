@@ -7,6 +7,8 @@ public class Carinfo {
 
     private Float price;
 
+    private String description;
+
     private Integer modelid;
 
     private Integer brandid;
@@ -35,6 +37,14 @@ public class Carinfo {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     public Integer getModelid() {

@@ -9,11 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes("adminname")
 public class AdminController {
 
     @Autowired
@@ -48,9 +50,17 @@ public class AdminController {
     }
 
     @RequestMapping("addAdmin.do")
-    public String addAdmin(Admin admin){
-        adminService.insertSelective(admin);
-        return "redirect:findAdminList.do";
+    public ModelAndView addAdmin(Admin admin){
+        ModelAndView mv = new ModelAndView();
+        Admin result = adminService.selectByPrimaryKey(admin.getAdminname());
+        if (result != null){
+            mv.addObject("addAdminErrorMessage","管理员账号已存在，请重新输入管理员账号！");
+            mv.setViewName("backstage/admin-add");
+        } else{
+            adminService.insertSelective(admin);
+            mv.setViewName("redirect:findAdminList.do");
+        }
+        return mv;
     }
 
     @RequestMapping("/findAdminByName.do")

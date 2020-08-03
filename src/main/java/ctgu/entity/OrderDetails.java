@@ -7,7 +7,7 @@ public class OrderDetails {
 
     private Integer carid;
 
-    private Integer orderId;
+    private Integer orderid;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class OrderDetails {
         this.carid = carid;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getOrderid() {
+        return orderid;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrderid(Integer orderid) {
+        this.orderid = orderid;
     }
 }

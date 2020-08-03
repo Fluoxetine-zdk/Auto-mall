@@ -75,6 +75,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">购物车</a></li>
+                <li><a href="${pageContext.request.contextPath}/findUserMessage.do?username=${username}">个人中心</a></li>
                 <li><a href="login.jsp">登录</a></li>
                 <li><a href="register.jsp">注册</a></li>
             </ul>
@@ -96,7 +97,7 @@
         <div class="row h-100 middle">
             <div class="col-12">
                 <div class="hero-content">
-                    <h2 style="color: white;font-weight: 600;">您好，</h2>
+                    <h2 style="color: white;font-weight: 600;">您好，${username}</h2>
                     <h1 class="text-info" style="color: white">欢迎来到新车网</h1>
                     <a href="${pageContext.request.contextPath}/user/findAllCarList.do?page=1&size=12" class="essence-btn" style="margin-left: 680px;margin-top: 30px">开始新车选购</a>
                 </div>
@@ -106,7 +107,7 @@
 </section>
 
 <div class="background">
-    <img src="resource/img/index.jpg" width="100%" height="100%">
+    <img src="${pageContext.request.contextPath}/resource/img/index.jpg" width="100%" height="100%">
 </div>
 
 

@@ -33,9 +33,9 @@
 
 	<script type="text/javascript">
 		function beforeSubmit(form){
-			if(form.username.value===''){
+			if(form.adminname.value===''){
 				alert('用户名不能为空！');
-				form.username.focus();
+				form.adminname.focus();
 				return false;
 			}
 			if(form.password.value===''){
@@ -43,7 +43,6 @@
 				form.password.focus();
 				return false;
 			}
-			alert("添加成功！");
 			return true;
 		}
 	</script>
@@ -89,8 +88,7 @@
 
 						<div class="col-md-2 title">用户名称</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="adminname"
-								placeholder="用户名称" value="">
+							<input type="text" class="form-control" name="adminname" placeholder="管理员账号" value="">
 						</div>
 						<div class="col-md-2 title">密码</div>
 						<div class="col-md-4 data">
@@ -99,15 +97,14 @@
 						</div>
 						<div class="col-md-2 title">用户状态</div>
 						<div class="col-md-4 data">
-							<select class="form-control select2" style="width: 100%"
-								name="status">
+							<select class="form-control select2" style="width: 100%" name="status">
 								<option value="1">可用</option>
 								<option value="0" >禁用</option>
 							</select>
 						</div>
-						<div class="col-md-2 title">权限</div>
 					</div>
 				</div>
+				<span style="color: red">${addAdminErrorMessage}</span>
 				<!--订单信息/--> <!--工具栏-->
 				<div class="box-tools text-center">
 					<button type="submit" class="btn bg-maroon">保存</button>

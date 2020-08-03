@@ -43,7 +43,7 @@
 				form.password.focus();
 				return false;
 			}
-			alert("添加成功！");
+
 			return true;
 		}
 	</script>
@@ -131,6 +131,7 @@
 
 					</div>
 				</div>
+				<span style="color: red">${addUserErrorMessage}</span>
 				<!--订单信息/--> <!--工具栏-->
 				<div class="box-tools text-center">
 					<button type="submit" class="btn bg-maroon">保存</button>

@@ -83,11 +83,6 @@
 								<label><input type="radio" name="sex" value="男" <c:if test="${user.sex.equals('男')}">checked</c:if>>男</label>
 								<label><input type="radio" name="sex" value="女" <c:if test="${user.sex.equals('女')}">checked</c:if>>女</label>
 						</div>
-<%--						<div class="col-md-2 title">邮箱</div>--%>
-<%--						<div class="col-md-4 data">--%>
-<%--							<input type="text" class="form-control" name="email"--%>
-<%--								placeholder="邮箱" value="">--%>
-<%--						</div>--%>
 						<div class="col-md-2 title">联系电话</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="phone"

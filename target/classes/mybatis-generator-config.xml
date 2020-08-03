@@ -86,7 +86,7 @@
             <property name="modelOnly" value="false" />
         </table>
         <table
-                tableName="order"
+                tableName="orders"
                 enableCountByExample="false"
                 enableDeleteByExample="false"
                 enableSelectByExample="true"

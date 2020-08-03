@@ -12,11 +12,14 @@ public interface CarService {
 
     int insertSelective(Carinfo record);
 
-    List<Carinfo> selectByExample(CarinfoExample example, Integer page, Integer size);
+    List<Carinfo> selectByExample(CarinfoExample example);
 
     Carinfo selectByPrimaryKey(Integer carid);
 
     int updateByPrimaryKeySelective(Carinfo record);
 
     int updateByPrimaryKey(Carinfo record);
+
+    List<Carinfo> selectListByPages(CarinfoExample example, Integer page, Integer size);
+
 }

@@ -367,7 +367,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">首页</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">首页</a>
         </div>
 
 
@@ -375,8 +375,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">购物车</a></li>
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
+                <li><a href="${pageContext.request.contextPath}/login.jsp">登录</a></li>
+                <li><a href="${pageContext.request.contextPath}/register.jsp">注册</a></li>
             </ul>
             <form class="navbar-form navbar-right" action="#" method="post">
                 <div class="form-group">
@@ -403,43 +403,12 @@
                 <dt class="filter-title-brand">品牌</dt>
                 <dd class="filter-brand">
                     <a href="#"  class="filter-item js-filter-item cur" >不限</a>
-                    <c:forEach items="${brands}" var="brand">
+                    <c:forEach items="${brandList}" var="brand">
                         <a href="#"  class="filter-item js-filter-item" >${brand.brandname}</a>
                     </c:forEach>
 
                 </dd>
 
-
-
-<%--                <dd class="filter-sub js_filter_sub">--%>
-
-<%--                    <a class="filter-item js-filter-item cur">不限</a>--%>
-
-<%--                    <a class="filter-item js-filter-item">途铠</a>--%>
-<%--                    <a class="filter-item js-filter-item">帕萨特新能源</a>--%>
-<%--                    <a class="filter-item js-filter-item">途观L</a>--%>
-<%--                    <a class="filter-item js-filter-item">凌渡</a>--%>
-<%--                    <a class="filter-item js-filter-item">威然</a>--%>
-<%--                    <a class="filter-item js-filter-item">途昂</a>--%>
-<%--                    <a class="filter-item js-filter-item">途昂X</a>--%>
-<%--                    <a class="filter-item js-filter-item">朗逸经典款</a>--%>
-<%--                    <a class="filter-item js-filter-item">帕萨特</a>--%>
-<%--                    <a class="filter-item js-filter-item">途观</a>--%>
-<%--                    <a class="filter-item js-filter-item">新桑塔纳</a>--%>
-<%--                    <a class="filter-item js-filter-item">New Polo</a>--%>
-<%--                    <a class="filter-item js-filter-item">Cross Polo</a>--%>
-<%--                    <a class="filter-item js-filter-item">途安L</a>--%>
-<%--                    <a class="filter-item js-filter-item">Polo GTI</a>--%>
-<%--                    <a class="filter-item js-filter-item">桑塔纳•浩纳</a>--%>
-<%--                    <a class="filter-item js-filter-item">全新朗行</a>--%>
-<%--                    <a class="filter-item js-filter-item">全新朗逸</a>--%>
-<%--                    <a class="filter-item js-filter-item">途安</a>--%>
-<%--                    <a class="filter-item js-filter-item">朗逸新能源</a>--%>
-<%--                    <a class="filter-item js-filter-item">朗境</a>--%>
-<%--                    <a class="filter-item js-filter-item">途岳</a>--%>
-<%--                    <a class="filter-item js-filter-item">辉昂</a>--%>
-<%--                    <a class="filter-item js-filter-item">途观L新能源</a>--%>
-<%--                </dd>--%>
             </dl>
             <dl class="filter-block">
                 <dt class="filter-title">价格</dt>
@@ -464,14 +433,10 @@
                 <dt class="filter-title">级别</dt>
                 <dd>
                     <a href="#"  class="filter-item cur" >不限</a>
-                    <a href="#"  class="filter-item" >微型车</a>
-                    <a href="#"  class="filter-item" >小型车</a>
-                    <a href="#"  class="filter-item" >紧凑型车</a>
-                    <a href="#"  class="filter-item" >中型车</a>
-                    <a href="#"  class="filter-item" >中大型车</a>
-                    <a href="#"  class="filter-item" >MPV</a>
-                    <a href="#"  class="filter-item" >SUV</a>
-                    <a href="#"  class="filter-item" >客车</a>
+                    <c:forEach items="${carmodelList}" var="carmodel">
+                        <a href="#"  class="filter-item" >${carmodel.modelname}</a>
+                    </c:forEach>
+
                 </dd>
             </dl>
 <!--            js实现，暂时未写技术脚本-->
@@ -530,8 +495,6 @@
                     </a>
                 </dd>
             </dl>
-
-
         </div>
 
         <div class="filter-showmore js-filter-showmore">
@@ -592,6 +555,7 @@
                         <div class="car-info ">
                             <div class="car-model-name row">
                                 <a class="name" href="#">
+                                    ${car.description}
                                     2021款 典范 1.5L 手自一体 精英型
                                 </a>
 
@@ -621,7 +585,6 @@
                                 加入购物车
                             </a>
                         </div>
-
                     </li>
                 </c:forEach>
 
