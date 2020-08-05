@@ -35,6 +35,19 @@ public class CarinfoController {
         return mv;
     }
 
+    public ModelAndView findCarListByBrand(Integer brandid,Integer page,Integer size){
+        ModelAndView mv = new ModelAndView();
+        CarinfoExample carinfoExample = new CarinfoExample();
+        CarinfoExample.Criteria criteria = carinfoExample.createCriteria();
+        criteria.andBrandidEqualTo(brandid);
+        List<Carinfo> carList = carService.selectListByPages(carinfoExample,page,size);
+        PageInfo pageInfo = new PageInfo(carList);
+        mv.addObject("pageInfo",pageInfo);
+        mv.addObject("brandList",brandService.selectByExample(new BrandExample()));
+        mv.addObject("carmodelList",carmodelService.selectByExample(new CarmodelExample()));
+        return mv;
+    }
+
 
     @RequestMapping("/unLogin/findAllCarList.do")
     public ModelAndView findAllCarListByUnLogin(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "12") Integer size){
@@ -50,8 +63,24 @@ public class CarinfoController {
         return mv;
     }
 
+    @RequestMapping("/unLoginFindCarListByBrand.do")
+    public ModelAndView unLoginFindCarListByBrand(Integer brandid,@RequestParam(name = "page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "12") Integer size){
+        ModelAndView mv = findCarListByBrand(brandid,page,size);
+        mv.addObject("brandid",brandid);
+        mv.setViewName("list-brand");
+        return mv;
+    }
+
+    @RequestMapping("/loginFindCarListByBrand.do")
+    public ModelAndView loginFindCarListByBrand(Integer brandid,@RequestParam(name = "page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "12") Integer size){
+        ModelAndView mv = findCarListByBrand(brandid,page,size);
+        mv.addObject("brandid",brandid);
+        mv.setViewName("user/list-brand");
+        return mv;
+    }
+
     @RequestMapping("/findCarListByBackstage.do")
-    public ModelAndView findCarListByBackstage(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "12") Integer size){
+    public ModelAndView findCarListByBackstage(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "5") Integer size){
         ModelAndView mv = findAllCarList(page, size);
         mv.setViewName("/backstage/car-list");
         return mv;
@@ -104,5 +133,24 @@ public class CarinfoController {
         carService.deleteByPrimaryKey(carid);
         return "redirect:findCarListByBackstage.do";
     }
+
+    @RequestMapping("/userFindCarInfoByCarId.do")
+    public ModelAndView userFindCarInfoByCarId(Integer carid){
+        ModelAndView mv = new ModelAndView();
+        Carinfo carInfo = carService.selectByPrimaryKey(carid);
+        mv.addObject("carInfo",carInfo);
+        mv.setViewName("user/details");
+        return mv;
+    }
+
+    @RequestMapping("/unLoginFindCarInfoByCarId.do")
+    public ModelAndView unLoginFindCarInfoByCarId(Integer carid){
+        ModelAndView mv = new ModelAndView();
+        Carinfo carInfo = carService.selectByPrimaryKey(carid);
+        mv.addObject("carInfo",carInfo);
+        mv.setViewName("details");
+        return mv;
+    }
+
 
 }

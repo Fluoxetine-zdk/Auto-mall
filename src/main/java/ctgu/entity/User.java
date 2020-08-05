@@ -82,4 +82,18 @@ public class User {
     public void setClassno(Integer classno) {
         this.classno = classno;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", createDate=" + createDate +
+                ", status=" + status +
+                ", classno=" + classno +
+                '}';
+    }
 }

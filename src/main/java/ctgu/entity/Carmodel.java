@@ -20,4 +20,12 @@ public class Carmodel {
     public void setModelname(String modelname) {
         this.modelname = modelname == null ? null : modelname.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Carmodel{" +
+                "modelid=" + modelid +
+                ", modelname='" + modelname + '\'' +
+                '}';
+    }
 }

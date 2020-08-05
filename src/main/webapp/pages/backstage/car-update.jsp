@@ -30,6 +30,24 @@
 
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+	<script type="text/javascript">
+		function beforeSubmit(form){
+			if(form.carname.value===''){
+				alert('产品名称不能为空！');
+				form.carname.focus();
+				return false;
+			}
+			if(form.price.value===''){
+				alert('价格不能为空！');
+				form.price.focus();
+				return false;
+			}
+			alert("修改成功！");
+			return true;
+		}
+	</script>
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -49,19 +67,19 @@
 		<!-- 内容头部 -->
 		<section class="content-header">
 			<h1>
-				用户管理 <small>用户更新</small>
+				产品管理 <small>产品更新</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-						href="${pageContext.request.contextPath}/findUserList.do">用户管理</a></li>
-				<li class="active">用户更新</li>
+						href="${pageContext.request.contextPath}/findCarListByBackstage.do">产品管理</a></li>
+				<li class="active">产品更新</li>
 			</ol>
 		</section>
 		<!-- 内容头部 /-->
 
-		<form action="${pageContext.request.contextPath}/backstageUpdateUser.do" method="post">
+		<form action="${pageContext.request.contextPath}/updateCarInfoByBackstage.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
 			<!-- 正文区域 -->
 			<section class="content"> <!--产品信息-->
 

@@ -56,17 +56,17 @@
 							<i class="fa fa-circle-o"></i> 产品管理
 					</a></li>
 					<li ><a
-							href="${pageContext.request.contextPath}/?page=1&size=5">
+							href="${pageContext.request.contextPath}/findBrandList.do?page=1&size=5">
 						<i class="fa fa-circle-o"></i> 品牌管理
 					</a></li>
 					<li ><a
 							href="${pageContext.request.contextPath}/findOrderListByBackstage.do?page=1&size=5">
 						<i class="fa fa-circle-o"></i> 订单管理
 					</a></li>
-					<li ><a
-							href="${pageContext.request.contextPath}/backstage/findAllSysLog.do?page=1&size=5">
-						<i class="fa fa-circle-o"></i> 日志管理
-					</a></li>
+<%--					<li ><a--%>
+<%--							href="${pageContext.request.contextPath}">--%>
+<%--						<i class="fa fa-circle-o"></i> 日志管理--%>
+<%--					</a></li>--%>
 				</ul></li>
 
 		</ul>

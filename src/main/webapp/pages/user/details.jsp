@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>details</title>
+    <title>产品详情</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -79,7 +80,7 @@
             color: #333;
         }
         .car-photos {
-            border: 1px solid #ddd;
+            /*border: 1px solid #ddd;*/
         }
         .car-photos .cur {
             visibility: visible;
@@ -88,7 +89,7 @@
             width: 468px;
         }
         .car-tabs li.cur {
-            border-color: #c71445;
+            /*border-color: #c71445;*/
         }
         .car-details {
             width: 690px;
@@ -338,6 +339,15 @@
 
 
     </style>
+
+    <script>
+        function addCheckToShoppingcart(){
+            if (confirm("您确定要添加到购物车吗？")){
+                window.location.href="${pageContext.request.contextPath}/addShoppingCartInDetail.do?username=${sessionScope.username}&carid=${carInfo.carid}";
+                return true;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -345,16 +355,17 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">首页</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/pages/user/index.jsp">首页</a>
         </div>
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">购物车</a></li>
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
+                <li><a href="#">${sessionScope.username}</a></li>
+                <li><a href="${pageContext.request.contextPath}/findUserMessage.do?username=${sessionScope.username}">个人中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/findShoppingCartByUsername.do?username=${sessionScope.username}">购物车</a></li>
+                <li><a href="${pageContext.request.contextPath}/userLogout.do">注销</a></li>
             </ul>
             <form class="navbar-form navbar-right" action="#" method="post">
                 <div class="form-group">
@@ -376,32 +387,32 @@
                 <div class="cxcar-header-nav clearfix">
                     <ul class="nav-list">
                         <li class="  ">
-                            <a href="#" title="首页" target="_blank">首页</a>
+                            <a href="${pageContext.request.contextPath}/pages/user/index.jsp" title="首页" target="_blank">首页</a>
 
                         </li>
                         <li class="icon-tip-box  ">
-                            <a href="#" title="7月促销" target="_blank">7月促销</a>
-                            <i class="icon-tip"><img src="img/7.jpg"></i>
+                            <a title="8月促销" target="_blank">8月促销</a>
+                            <i class="icon-tip">
+                                <img src="${pageContext.request.contextPath}/resource/img/chu.jpg">
+                            </i>
                         </li>
                         <li class="icon-tip-box  ">
-                            <a href="#" title="享特价" target="_blank">享特价</a>
-                            <i class="icon-tip"><img src="img/7.jpg"></i>
+                            <a title="享特价" target="_blank">享特价</a>
+                            <i class="icon-tip">
+                                <img src="${pageContext.request.contextPath}/resource/img/chu.jpg">
+                            </i>
                         </li>
                         <li class="  ">
-                            <a href="#">品牌旗舰店</a>
-
+                            <a>品牌旗舰店</a>
                         </li>
                         <li class="  ">
-                            <a href="#">全国实体店</a>
-
+                            <a>全国实体店</a>
                         </li>
                         <li class="  ">
-                            <a href="#">贷款购车</a>
-
+                            <a>贷款购车</a>
                         </li>
                         <li class="  ">
-                            <a href="#">车型大全</a>
-
+                            <a>车型大全</a>
                         </li>
                     </ul>
                 </div>
@@ -416,13 +427,33 @@
             <ul class="car-photos">
                 <li   class="cur"  bIsDetailImg="0">
                     <div class="photo-wrap">
-                        <img src="img/6.png" alt="">
+                        <img src="
+                            <c:if test="${not empty carInfo.imgurl && fn:contains(carInfo.imgurl, 'http') == false}">
+                                ${pageContext.request.contextPath}/resource/upload/${carInfo.imgurl}
+                            </c:if>
+                            <c:if test="${empty carInfo.imgurl}">
+                                ${pageContext.request.contextPath}/resource/img/failed.png
+                            </c:if>
+                            <c:if test="${fn:contains(carInfo.imgurl, 'http')==true}">
+                                ${carInfo.imgurl}
+                            </c:if>
+                        " alt="">
                     </div>
                 </li>
             </ul>
             <ul class="car-tabs clearfix">
                 <li  class="cur" >
-                    <img src="img/7.png" alt="2020款 330TSI 商务版"><em></em>
+                    <img src="
+                        <c:if test="${not empty carInfo.imgurl && fn:contains(carInfo.imgurl, 'http') == false}">
+                            ${pageContext.request.contextPath}/resource/upload/${carInfo.imgurl}
+                        </c:if>
+                        <c:if test="${empty carInfo.imgurl}">
+                            ${pageContext.request.contextPath}/resource/img/failed.png
+                        </c:if>
+                        <c:if test="${fn:contains(carInfo.imgurl, 'http')==true}">
+                            ${carInfo.imgurl}
+                        </c:if>
+                    " alt="${carInfo.description}"><em></em>
                 </li>
             </ul>
         </div>
@@ -430,17 +461,11 @@
 
     <div class="car-details">
         <div class="car-info-title">
-            <h1>【上汽大众旗舰店】上汽大众 Viloran威然 尊崇备至 专享礼遇</h1>
+            <h1>${carInfo.carname}&nbsp;&nbsp;&nbsp;${carInfo.description}</h1>
+            <h2>【新车网】 尊崇备至 专享礼遇</h2>
 
             <div class="car-ad">【燃擎一夏】购车送价值150元西铁城电动牙刷；【专享礼遇】2年0利率，8000元置换补贴，4次免费保养</div>
 
-            <div class="pk-duibi js_pk-duibi pk-duibi-only" data-index='1'
-                 data-brandname="上汽大众"
-                 data-seriesname="Viloran"
-                 data-modelname="2020款 330TSI 商务版"
-                 data-velmodelid="1001042372">
-
-            </div>
 
 
         </div>
@@ -448,15 +473,10 @@
         <div class="car-price clearfix" style="">
             <div class="naked-car-price clearfix">
                 <div class="summary-price">
-                    <span class="summary-price-name">订&nbsp;&nbsp;&nbsp;&nbsp;金</span>
-                    <strong><span class="yen">¥</span><span class="js-bare-price">188</span></strong>
-                    <span class="zd-price">指导价
-                        	<span class="model-id-1001042372">
-	                        		&yen;28.68万起
-	             			</span>
-                        </span>
+                    <span class="summary-price-name">价&nbsp;&nbsp;&nbsp;&nbsp;格</span>
+                    <strong><span class="yen">¥</span><span class="js-bare-price">${carInfo.price}</span></strong>
                     <span class="payment-info" title="订金可抵扣车款，如未购车，订金随时可退" >
-                        	<i class="info-icon"></i>订金可抵扣车款，如未购车，订金随时可退
+                        	<i class="info-icon"></i>全网新车最低价,欢迎对比  &nbsp;&nbsp;&nbsp;品质保证
                         </span>
                 </div>
             </div>
@@ -478,21 +498,21 @@
             </div>
         </div>
 
-        <div style="margin-top: 25px">
+        <div style="margin-top: 45px">
             <div class="car-order">
                 <input type="hidden" id="js_hidden_data" value="" />
 
-                <button class="btn-submit submit_preorder order-btn">
-                    立即抢购
+                <button class="btn-submit submit_preorder order-btn" onclick="addCheckToShoppingcart()">
+                    加入购物车
                 </button>
 
             </div>
-            <!-- <a class="consult-btn js_help_service4" ca="v170727_cm-brandDetail_pc_car-main_c2r6d2$询问底价$">询问底价</a>-->
-            <a class="consult-btn js-shopping-add">加入购物车</a>
+
+
         </div>
 
 
-        <div class="form-safeguard clearfix">
+        <div class="form-safeguard clearfix" style="margin-top: 30px">
             服务承诺
             <img src="${pageContext.request.contextPath}/resource/img/8.png" ><span class="safeguard-item">服务品质保障</span>
             <img src="${pageContext.request.contextPath}/resource/img/9.png" ><span class="safeguard-item">全国联保保障</span>

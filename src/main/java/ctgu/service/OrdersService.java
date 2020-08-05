@@ -22,4 +22,6 @@ public interface OrdersService {
 
     int updateByPrimaryKey(Orders record);
 
+    List<Orders> selectByExample(OrdersExample example);
+
 }

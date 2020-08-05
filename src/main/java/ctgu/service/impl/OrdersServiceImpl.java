@@ -53,4 +53,9 @@ public class OrdersServiceImpl implements OrdersService {
     public int updateByPrimaryKey(Orders record) {
         return ordersMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<Orders> selectByExample(OrdersExample example) {
+        return ordersMapper.selectByExample(example);
+    }
 }

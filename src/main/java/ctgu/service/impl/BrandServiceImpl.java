@@ -1,5 +1,6 @@
 package ctgu.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import ctgu.dao.BrandMapper;
 import ctgu.entity.Brand;
 import ctgu.entity.BrandExample;
@@ -48,5 +49,11 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public int updateByPrimaryKey(Brand record) {
         return brandMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Brand> selectAll(BrandExample example, Integer page, Integer size) {
+        PageHelper.startPage(page,size);
+        return brandMapper.selectByExample(example);
     }
 }

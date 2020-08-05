@@ -17,14 +17,6 @@
 	name="viewport">
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<script>
-		function deleteMess(id) {
-			//安全提示
-			if (confirm("您确定要删除该条信息吗？")){
-				location.href = "${pageContext.request.contextPath}/backstage/message/deleteMess.do?id="+id;
-			}
-		}
-	</script>
 
 
 	<link rel="stylesheet" href="/webjars/adminlte/2.3.11/bootstrap/css/bootstrap.min.css">
@@ -87,6 +79,10 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
+										<button type="button" class="btn btn-default" title="返回"
+												onclick="history.back(-1);">
+											 返回
+										</button>
 										<button type="button" class="btn btn-default" title="刷新"
 												onclick="location.href='${pageContext.request.contextPath}/backstageFindOrderDetailsByOrderId.do?orderid=${orderDetails.get(0).orderid}'">
 											<i class="fa fa-refresh"></i> 刷新

@@ -65,9 +65,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">购物车</a></li>
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
+                <li><a href="#">${sessionScope.username}</a></li>
+                <li><a href="${pageContext.request.contextPath}/findUserMessage.do?username=${sessionScope.username}">个人中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/findShoppingCartByUsername.do?username=${sessionScope.username}">购物车</a></li>
+                <li><a href="${pageContext.request.contextPath}/userLogout.do">注销</a></li>
             </ul>
             <form class="navbar-form navbar-right" action="#" method="post">
                 <div class="form-group">

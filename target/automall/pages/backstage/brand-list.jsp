@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>新车网后台管理 | 产品信息</title>
+<title>新车网后台管理 | 品牌管理</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->
@@ -58,11 +58,11 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 				<h1>
-					数据管理 <small>数据列表</small>
+					品牌管理 <small>数据列表</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="${pageContext.request.contextPath}/pages/backstage/backstage-main.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
-					<li><a >产品管理</a></li>
+					<li><a >品牌管理</a></li>
 					<li class="active">数据列表</li>
 				</ol>
 			</section>
@@ -87,14 +87,14 @@
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default" title="新建"
-											onclick="location.href='${pageContext.request.contextPath}/pages/backstage/car-add.jsp'">
+											onclick="location.href='${pageContext.request.contextPath}/pages/backstage/brand-add.jsp'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
-										<button type="button" class="btn btn-default" title="删除">
-											<i class="fa fa-trash-o"></i> 删除
-										</button>
+<%--										<button type="button" class="btn btn-default" title="删除">--%>
+<%--											<i class="fa fa-trash-o"></i> 删除--%>
+<%--										</button>--%>
 										<button type="button" class="btn btn-default" title="刷新"
-												onclick="location.href='${pageContext.request.contextPath}/findCarListByBackstage.do'">
+												onclick="location.href='${pageContext.request.contextPath}/findBrandList.do?page=1&size=5'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
@@ -121,45 +121,22 @@
 										<th class="" style="padding-right: 0px;"><input
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
-										<th class="sorting_asc">ID</th>
-										<th class="sorting_desc">产品名称</th>
-<%--										<th class="sorting_asc sorting_asc_disabled">信息描述</th>--%>
-										<th class="sorting_desc">价格</th>
-<%--										<th class="sorting_desc sorting_desc_disabled">发布日期</th>--%>
-										<th class="sorting">车型</th>
-										<th class="text-center sorting">品牌</th>
-<%--										<th class="text-center sorting">状态</th>--%>
+										<th class="sorting_desc">品牌ID</th>
+										<th class="sorting_desc">品牌名称</th>
 										<th class="text-center">操作</th>
 									</tr>
 								</thead>
 								<tbody>
 
 
-									<c:forEach items="${pageInfo.list}" var="car">
+									<c:forEach items="${pageInfo.list}" var="brand">
 
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td>${car.carid}</td>
-											<td>${car.carname}</td>
-											<td>￥${car.price}</td>
-
-											<c:forEach items="${carmodelList}" var="carmodel">
-												<c:if test="${car.modelid == carmodel.modelid}">
-													<td>${carmodel.modelname}</td>
-												</c:if>
-											</c:forEach>
-
-											<c:forEach items="${brandList}" var="brand">
-												<c:if test="${car.brandid == brand.brandid}">
-													<td>${brand.brandname}</td>
-												</c:if>
-											</c:forEach>
-
-
-
+											<td>${brand.brandid}</td>
+											<td>${brand.brandname}</td>
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/backstageFindCarById.do?carid=${car.carid}" class="btn bg-olive btn-xs">编辑</a>
-												<a href="javascript:deleteMess(${car.carid})" class="btn bg-olive btn-xs">删除</a>
+												<a href="${pageContext.request.contextPath}/findBrandByBrandId.do?brandid=${brand.brandid}" class="btn bg-olive btn-xs">编辑</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -189,13 +166,13 @@
 
 						<div class="box-tools pull-right">
 							<ul class="pagination">
-								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
-								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findBrandList.do?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findBrandList.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
 								<c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
-									<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+									<li><a href="${pageContext.request.contextPath}/findBrandList.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
 								</c:forEach>
-								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
-								<li><a href="${pageContext.request.contextPath}/findCarListByBackstage.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findBrandList.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/findBrandList.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
 							</ul>
 						</div>
 
@@ -239,7 +216,7 @@
 	<script>
 		function changePageSize(){
 			var pageSize = $("#changePageSize").val();
-			location.href = "${pageContext.request.contextPath}/findCarListByBackstage.do?page=1&size="+pageSize;
+			location.href = "${pageContext.request.contextPath}/findBrandList.do?page=1&size="+pageSize;
 
 		}
 

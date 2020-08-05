@@ -133,7 +133,7 @@
         </form>
 
         <div class="panel-footer">
-            <a href="#" tabindex="5">创建一个账户</a>
+            <a href="${pageContext.request.contextPath}/register.jsp" tabindex="5">创建一个账户</a>
         </div>
     </div>
 

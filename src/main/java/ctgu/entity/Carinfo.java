@@ -70,4 +70,17 @@ public class Carinfo {
     public void setImgurl(String imgurl) {
         this.imgurl = imgurl == null ? null : imgurl.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Carinfo{" +
+                "carid=" + carid +
+                ", carname='" + carname + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", modelid=" + modelid +
+                ", brandid=" + brandid +
+                ", imgurl='" + imgurl + '\'' +
+                '}';
+    }
 }

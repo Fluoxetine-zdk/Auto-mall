@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>新车网后台管理 | 产品信息</title>
+<title>新车网后台管理 | 订单管理</title>
 
 
 <!-- Tell the browser to be responsive to screen width -->
@@ -17,14 +17,14 @@
 	name="viewport">
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<script>
-		function deleteMess(id) {
-			//安全提示
-			if (confirm("您确定要删除该条信息吗？")){
-				location.href = "${pageContext.request.contextPath}/backstage/message/deleteMess.do?id="+id;
-			}
-		}
-	</script>
+<%--	<script>--%>
+<%--		function deleteMess(id) {--%>
+<%--			//安全提示--%>
+<%--			if (confirm("您确定要删除该条信息吗？")){--%>
+<%--				location.href = "${pageContext.request.contextPath}/backstage/message/deleteMess.do?id="+id;--%>
+<%--			}--%>
+<%--		}--%>
+<%--	</script>--%>
 
 
 	<link rel="stylesheet" href="/webjars/adminlte/2.3.11/bootstrap/css/bootstrap.min.css">
@@ -86,15 +86,15 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" title="新建"
-											onclick="location.href='${pageContext.request.contextPath}/pages/backstage/car-add.jsp'">
-											<i class="fa fa-file-o"></i> 新建
-										</button>
-										<button type="button" class="btn btn-default" title="删除">
-											<i class="fa fa-trash-o"></i> 删除
-										</button>
+<%--										<button type="button" class="btn btn-default" title="新建"--%>
+<%--											onclick="location.href='${pageContext.request.contextPath}/pages/backstage/car-add.jsp'">--%>
+<%--											<i class="fa fa-file-o"></i> 新建--%>
+<%--										</button>--%>
+<%--										<button type="button" class="btn btn-default" title="删除">--%>
+<%--											<i class="fa fa-trash-o"></i> 删除--%>
+<%--										</button>--%>
 										<button type="button" class="btn btn-default" title="刷新"
-												onclick="location.href='${pageContext.request.contextPath}/findCarListByBackstage.do'">
+												onclick="location.href='${pageContext.request.contextPath}/findOrderListByBackstage.do'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
@@ -139,13 +139,17 @@
 											<td>${order.orderid}</td>
 											<td>${order.username}</td>
 											<td>￥${order.totalprice}</td>
-											<td>${order.status}</td>
+											<td>
+												<c:if test="${order.status == 0}">未付款</c:if>
+												<c:if test="${order.status == 1}">已付款</c:if>
+												<c:if test="${order.status == -1}">订单取消</c:if>
+											</td>
 											<td>${order.createdate}</td>
 
 											<td class="text-center">
 												<a href="${pageContext.request.contextPath}/backstageFindOrderDetailsByOrderId.do?orderid=${order.orderid}" class="btn bg-olive btn-xs">查看详情</a>
-												<a href="${pageContext.request.contextPath}/backstageFindCarById.do?carid=${order.orderid}" class="btn bg-olive btn-xs">修改状态</a>
-												<a href="javascript:deleteMess(${order.orderid})" class="btn bg-olive btn-xs">删除</a>
+												<a href="${pageContext.request.contextPath}/backstageFindOrderByOrderId.do?orderid=${order.orderid}" class="btn bg-olive btn-xs">修改状态</a>
+<%--												<a href="javascript:deleteMess(${order.orderid})" class="btn bg-olive btn-xs">删除</a>--%>
 											</td>
 										</tr>
 									</c:forEach>

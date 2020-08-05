@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -28,7 +30,7 @@ public class UserController {
         criteria.andUsernameEqualTo(loginingUser.getUsername());
         criteria.andPasswordEqualTo(loginingUser.getPassword());
         List<User> list = userService.selectByExample(userExample);
-        if (list.size() ==1){
+        if (list.size() ==1 && list.get(0).getStatus() == 1){
             User loginedUser = list.get(0);
             model.addAttribute("username",loginedUser.getUsername());
             return "user/index";
@@ -117,6 +119,11 @@ public class UserController {
         return modelAndView;
     }
 
-
+    @RequestMapping("/userLogout.do")
+    public String tologout(HttpSession session, SessionStatus sessionStatus) {
+        session.removeAttribute("username");
+        sessionStatus.setComplete();
+        return "redirect:index.jsp";
+    }
 
 }

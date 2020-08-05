@@ -19,4 +19,6 @@ public interface BrandService {
     int updateByPrimaryKeySelective(Brand record);
 
     int updateByPrimaryKey(Brand record);
+
+    List<Brand> selectAll(BrandExample example, Integer page, Integer size);
 }

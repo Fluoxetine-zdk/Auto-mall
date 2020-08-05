@@ -18,7 +18,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<script>
-		function deleteMess(id) {
+		function deleteCarInfo(id) {
 			//安全提示
 			if (confirm("您确定要删除该条信息吗？")){
 				location.href = "${pageContext.request.contextPath}/deleteCarInfoByCarId.do?carid="+id;
@@ -159,7 +159,7 @@
 
 											<td class="text-center">
 												<a href="${pageContext.request.contextPath}/backstageFindCarById.do?carid=${car.carid}" class="btn bg-olive btn-xs">编辑</a>
-												<a href="javascript:deleteMess(${car.carid})" class="btn bg-olive btn-xs">删除</a>
+												<a href="javascript:deleteCarInfo(${car.carid})" class="btn bg-olive btn-xs">删除</a>
 											</td>
 										</tr>
 									</c:forEach>

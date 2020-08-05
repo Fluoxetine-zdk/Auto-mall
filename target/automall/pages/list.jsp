@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -374,7 +375,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">购物车</a></li>
+                <li><a onclick="loginFirst()">购物车</a></li>
                 <li><a href="${pageContext.request.contextPath}/login.jsp">登录</a></li>
                 <li><a href="${pageContext.request.contextPath}/register.jsp">注册</a></li>
             </ul>
@@ -393,7 +394,7 @@
 </nav>
 <div class="wrapper_1">
     <div >
-        <h1 align="center" style="font-size: 35px">XXX网</h1>
+        <h1 align="center" style="font-size: 35px">新车网</h1>
     </div>
     <!--筛选项-->
     <div class="wrapper ">
@@ -404,29 +405,29 @@
                 <dd class="filter-brand">
                     <a href="#"  class="filter-item js-filter-item cur" >不限</a>
                     <c:forEach items="${brandList}" var="brand">
-                        <a href="#"  class="filter-item js-filter-item" >${brand.brandname}</a>
+                        <a href="${pageContext.request.contextPath}/unLoginFindCarListByBrand.do?brandid=${brand.brandid}"  class="filter-item js-filter-item" >${brand.brandname}</a>
                     </c:forEach>
 
                 </dd>
 
             </dl>
-            <dl class="filter-block">
-                <dt class="filter-title">价格</dt>
-                <dd>
-                    <div class="filter-list">
-                        <a class="filter-item cur">不限</a>
-                        <a class="filter-item">10万以下</a>
-                        <a class="filter-item">10万-15万</a>
-                        <a class="filter-item">15万-20万</a>
-                        <a class="filter-item">20万-25万</a>
-                        <a class="filter-item">25万-35万</a>
-                        <a class="filter-item">35万以上</a>
-                    </div>
-                    <div class="filter-input">
-                        <input type="text" id="js_from_price"  maxlength="4" />-<input type="text" id="js_to_Price"   maxlength="4"/><span class="unit">万元</span><a href="javascript:void(0);" class="filter-btn js_range_submit" CA="v170727_cm-list_pc_filter-price_r2$确定$">确定</a>
-                    </div>
-                </dd>
-            </dl>
+<%--            <dl class="filter-block">--%>
+<%--                <dt class="filter-title">价格</dt>--%>
+<%--                <dd>--%>
+<%--                    <div class="filter-list">--%>
+<%--                        <a class="filter-item cur">不限</a>--%>
+<%--                        <a class="filter-item">10万以下</a>--%>
+<%--                        <a class="filter-item">10万-15万</a>--%>
+<%--                        <a class="filter-item">15万-20万</a>--%>
+<%--                        <a class="filter-item">20万-25万</a>--%>
+<%--                        <a class="filter-item">25万-35万</a>--%>
+<%--                        <a class="filter-item">35万以上</a>--%>
+<%--                    </div>--%>
+<%--                    <div class="filter-input">--%>
+<%--                        <input type="text" id="js_from_price"  maxlength="4" />-<input type="text" id="js_to_Price"   maxlength="4"/><span class="unit">万元</span><a href="javascript:void(0);" class="filter-btn js_range_submit" CA="v170727_cm-list_pc_filter-price_r2$确定$">确定</a>--%>
+<%--                    </div>--%>
+<%--                </dd>--%>
+<%--            </dl>--%>
 
 
             <dl class="filter-block">
@@ -437,62 +438,6 @@
                         <a href="#"  class="filter-item" >${carmodel.modelname}</a>
                     </c:forEach>
 
-                </dd>
-            </dl>
-<!--            js实现，暂时未写技术脚本-->
-            <dl class="filter-block js-filter-hide hide">
-                <dt class="filter-title">变速箱</dt>
-                <dd>
-                    <a href="#"  class="filter-item cur" >
-                        不限
-                    </a>
-                    <a href="/list.jsp/car.chexiang.com/list/0-1-0-0-0-0-0-0-1-0-0-0-0-0-19-1.html"  class="filter-item" >
-                        手动
-                    </a>
-                    <a href="/list.jsp/car.chexiang.com/list/0-1-0-0-0-0-0-0-2-0-0-0-0-0-19-1.html"  class="filter-item" >
-                        自动
-                    </a>
-                </dd>
-            </dl>
-            <dl class="filter-block-config js-filter-hide hide no-padding">
-                <dt class="filter-title">按配置</dt>
-                <dd>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="GPS导航" type="checkbox" value=""   />   <label data-name="GPS导航" for="GPS导航"></label>
-                    </a>
-                    <a href="javascript:void(0)"  class="filter-item-mult" >
-                        <input name="configurationCheckbox" class="filter-check" id="倒车影像" type="checkbox" value=""   />   <label data-name="倒车影像" for="倒车影像"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="涡轮增压" type="checkbox" value=""   />   <label data-name="涡轮增压" for="涡轮增压"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="真皮座椅" type="checkbox" value=""   />   <label data-name="真皮座椅" for="真皮座椅"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="车身稳定系统" type="checkbox" value=""   />   <label data-name="车身稳定系统" for="车身稳定系统"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="氙气大灯" type="checkbox" value=""   />   <label data-name="氙气大灯" for="氙气大灯"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="定速巡航" type="checkbox" value=""   />   <label data-name="定速巡航" for="定速巡航"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="胎压监测" type="checkbox" value=""   />   <label data-name="胎压监测" for="胎压监测"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="自动泊车" type="checkbox" value=""   />   <label data-name="自动泊车" for="自动泊车"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="电动座椅" type="checkbox" value=""   />   <label data-name="电动座椅" for="电动座椅"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="儿童座椅接口" type="checkbox" value=""   />   <label data-name="儿童座椅接口" for="儿童座椅接口"></label>
-                    </a>
-                    <a href="javascript:void(0)" class="filter-item-mult"  >
-                        <input name="configurationCheckbox" class="filter-check" id="多功能方向盘" type="checkbox" value=""   />   <label data-name="多功能方向盘" for="多功能方向盘"></label>
-                    </a>
                 </dd>
             </dl>
         </div>
@@ -537,26 +482,28 @@
 
                         <div class="cont-info row">
                             <p class="car-name">${car.carname}</p>
-                            <a href="#">
-                                <c:if test="${not empty car.imgurl}">
-                                    <img class="lazy" src="resource/upload/${car.imgurl}"  alt="${car.carname}" />
+                            <a href="${pageContext.request.contextPath}/unLoginFindCarInfoByCarId.do?carid=${car.carid}">
+                                <c:if test="${not empty car.imgurl && fn:contains(car.imgurl, 'http') == false}">
+                                    <img class="lazy" src="${pageContext.request.contextPath}/resource/upload/${car.imgurl}"  alt="${car.carname}" />
                                 </c:if>
                                 <c:if test="${empty car.imgurl}">
-                                    <img class="lazy" src="../resource/img/failed.png"  alt="${car.carname}" />
+                                    <img class="lazy" src="${pageContext.request.contextPath}/resource/img/failed.png"  alt="${car.carname}" />
+                                </c:if>
+                                <c:if test="${fn:contains(car.imgurl, 'http')==true}">
+                                    <img class="lazy" src="${car.imgurl}"  alt="${car.carname}" />
                                 </c:if>
                             </a>
 
                             <p class="car-tag">
                                 <span>热销爆款</span>
-                                <span>低油耗</span>
-                                <span>大空间</span>
+<%--                                <span>低油耗</span>--%>
+<%--                                <span>大空间</span>--%>
                             </p>
                         </div>
                         <div class="car-info ">
                             <div class="car-model-name row">
-                                <a class="name" href="#">
+                                <a class="name" href="${pageContext.request.contextPath}/unLoginFindCarInfoByCarId.do?carid=${car.carid}">
                                     ${car.description}
-                                    2021款 典范 1.5L 手自一体 精英型
                                 </a>
 
                             </div>
@@ -626,9 +573,6 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
-<script>
-
-</script>
 
 </body>
 </html>

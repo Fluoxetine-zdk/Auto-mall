@@ -30,6 +30,22 @@
 
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+	<script type="text/javascript">
+		function beforeSubmit(form){
+			if(form.adminname.value===''){
+				alert('用户名不能为空！');
+				form.adminname.focus();
+				return false;
+			}
+			if(form.password.value===''){
+				alert('密码不能为空！');
+				form.password.focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -61,7 +77,7 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/backstageUpdateAdmin.do" method="post">
+			<form action="${pageContext.request.contextPath}/backstageUpdateAdmin.do" method="post" name="form" onSubmit="return beforeSubmit(this);">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 

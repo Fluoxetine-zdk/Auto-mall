@@ -30,4 +30,13 @@ public class Admin {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminname='" + adminname + '\'' +
+                ", password='" + password + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

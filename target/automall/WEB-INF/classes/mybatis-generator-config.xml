@@ -130,15 +130,6 @@
         >
             <property name="modelOnly" value="false" />
         </table>
-        <table
-                tableName="syslog"
-                enableCountByExample="false"
-                enableDeleteByExample="false"
-                enableSelectByExample="true"
-                enableUpdateByExample="false"
-        >
-            <property name="modelOnly" value="false" />
-        </table>
         <!--example:https://blog.csdn.net/sinat_30474567/article/details/72625651-->
     </context>
 </generatorConfiguration>

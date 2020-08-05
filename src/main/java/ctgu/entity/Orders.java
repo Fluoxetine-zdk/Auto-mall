@@ -52,4 +52,15 @@ public class Orders {
     public void setTotalprice(Float totalprice) {
         this.totalprice = totalprice;
     }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderid=" + orderid +
+                ", username='" + username + '\'' +
+                ", createdate=" + createdate +
+                ", status=" + status +
+                ", totalprice=" + totalprice +
+                '}';
+    }
 }

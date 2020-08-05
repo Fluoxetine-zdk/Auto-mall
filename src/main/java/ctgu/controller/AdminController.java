@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -28,7 +30,7 @@ public class AdminController {
         criteria.andAdminnameEqualTo(loginingAdmin.getAdminname());
         criteria.andPasswordEqualTo(loginingAdmin.getPassword());
         List<Admin> admins = adminService.selectByExample(adminExample);
-        if (admins.size() == 1){
+        if (admins.size() == 1 && admins.get(0).getStatus() == 1){
             Admin admin =  admins.get(0);
             model.addAttribute("adminname",admin.getAdminname());
             return "backstage/backstage-main";
@@ -76,5 +78,12 @@ public class AdminController {
     public String updateUser(Admin admin){
         adminService.updateByPrimaryKeySelective(admin);
         return "redirect:findAdminList.do";
+    }
+
+    @RequestMapping("/adminLogout.do")
+    public String tologout(HttpSession session, SessionStatus sessionStatus) {
+        session.removeAttribute("adminname");
+        sessionStatus.setComplete();
+        return "redirect:backstageLogin.jsp";
     }
 }
