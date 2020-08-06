@@ -189,7 +189,6 @@
 		oneCount(num);
 		//计算所有总价
 		computeAll();
-		alert(pids[num].value)
 		//更新购物车.
 		ajaxUpdateCar(pids[num].value,numbers[num].value)
 
@@ -208,7 +207,6 @@
 		//计算所有总价
 		 computeAll();
 		//更新购物车.
-		//alert(pids[num].value)
 		ajaxUpdateCar(pids[num].value,numbers[num].value)
 	}
 

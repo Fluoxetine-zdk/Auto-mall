@@ -140,7 +140,7 @@
                 </div>
                 <div class="form-group row" style="padding-left: 80px">
                     <div class="container" style="margin-top: 15px">
-                        <button type="submit" >修改</button>
+                        <button type="submit" >保存</button>
                         <button type="button" onclick="history.back(-1);">返回</button>
                     </div>
                 </div>
